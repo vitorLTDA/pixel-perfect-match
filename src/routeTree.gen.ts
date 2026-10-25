@@ -14,9 +14,14 @@ import { Route as ForgotPasswordRouteImport } from './routes/forgot-password'
 import { Route as LoginRouteImport } from './routes/login'
 import { Route as OnboardingRouteImport } from './routes/onboarding'
 import { Route as RegisterRouteImport } from './routes/register'
+import { Route as AgreementsAgreementIdRouteImport } from './routes/agreements.$agreementId'
 import { Route as GigsIndexRouteImport } from './routes/gigs.index'
 import { Route as GigsGigIdRouteImport } from './routes/gigs.$gigId'
+import { Route as GigsNewRouteImport } from './routes/gigs.new'
+import { Route as MyGigsIndexRouteImport } from './routes/my-gigs.index'
 import { Route as SettingsProfileRouteImport } from './routes/settings.profile'
+import { Route as GigsGigIdEditRouteImport } from './routes/gigs.$gigId_.edit'
+import { Route as MyGigsGigIdApplicationsRouteImport } from './routes/my-gigs.$gigId.applications'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -43,6 +48,11 @@ const RegisterRoute = RegisterRouteImport.update({
   path: '/register',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AgreementsAgreementIdRoute = AgreementsAgreementIdRouteImport.update({
+  id: '/agreements/$agreementId',
+  path: '/agreements/$agreementId',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const GigsIndexRoute = GigsIndexRouteImport.update({
   id: '/gigs/',
   path: '/gigs/',
@@ -53,9 +63,29 @@ const GigsGigIdRoute = GigsGigIdRouteImport.update({
   path: '/gigs/$gigId',
   getParentRoute: () => rootRouteImport,
 } as any)
+const GigsNewRoute = GigsNewRouteImport.update({
+  id: '/gigs/new',
+  path: '/gigs/new',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MyGigsIndexRoute = MyGigsIndexRouteImport.update({
+  id: '/my-gigs/',
+  path: '/my-gigs/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SettingsProfileRoute = SettingsProfileRouteImport.update({
   id: '/settings/profile',
   path: '/settings/profile',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GigsGigIdEditRoute = GigsGigIdEditRouteImport.update({
+  id: '/gigs/$gigId_/edit',
+  path: '/gigs/$gigId/edit',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MyGigsGigIdApplicationsRoute = MyGigsGigIdApplicationsRouteImport.update({
+  id: '/my-gigs/$gigId/applications',
+  path: '/my-gigs/$gigId/applications',
   getParentRoute: () => rootRouteImport,
 } as any)
 
@@ -65,9 +95,14 @@ export interface FileRoutesByFullPath {
   '/login': typeof LoginRoute
   '/onboarding': typeof OnboardingRoute
   '/register': typeof RegisterRoute
+  '/agreements/$agreementId': typeof AgreementsAgreementIdRoute
   '/gigs/$gigId': typeof GigsGigIdRoute
+  '/gigs/new': typeof GigsNewRoute
   '/settings/profile': typeof SettingsProfileRoute
   '/gigs/': typeof GigsIndexRoute
+  '/my-gigs/': typeof MyGigsIndexRoute
+  '/gigs/$gigId/edit': typeof GigsGigIdEditRoute
+  '/my-gigs/$gigId/applications': typeof MyGigsGigIdApplicationsRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -75,9 +110,14 @@ export interface FileRoutesByTo {
   '/login': typeof LoginRoute
   '/onboarding': typeof OnboardingRoute
   '/register': typeof RegisterRoute
+  '/agreements/$agreementId': typeof AgreementsAgreementIdRoute
   '/gigs/$gigId': typeof GigsGigIdRoute
+  '/gigs/new': typeof GigsNewRoute
   '/settings/profile': typeof SettingsProfileRoute
   '/gigs': typeof GigsIndexRoute
+  '/my-gigs': typeof MyGigsIndexRoute
+  '/gigs/$gigId/edit': typeof GigsGigIdEditRoute
+  '/my-gigs/$gigId/applications': typeof MyGigsGigIdApplicationsRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -86,9 +126,14 @@ export interface FileRoutesById {
   '/login': typeof LoginRoute
   '/onboarding': typeof OnboardingRoute
   '/register': typeof RegisterRoute
+  '/agreements/$agreementId': typeof AgreementsAgreementIdRoute
   '/gigs/$gigId': typeof GigsGigIdRoute
+  '/gigs/new': typeof GigsNewRoute
   '/settings/profile': typeof SettingsProfileRoute
   '/gigs/': typeof GigsIndexRoute
+  '/my-gigs/': typeof MyGigsIndexRoute
+  '/gigs/$gigId_/edit': typeof GigsGigIdEditRoute
+  '/my-gigs/$gigId/applications': typeof MyGigsGigIdApplicationsRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -98,9 +143,14 @@ export interface FileRouteTypes {
     | '/login'
     | '/onboarding'
     | '/register'
+    | '/agreements/$agreementId'
     | '/gigs/$gigId'
+    | '/gigs/new'
     | '/settings/profile'
     | '/gigs/'
+    | '/my-gigs/'
+    | '/gigs/$gigId/edit'
+    | '/my-gigs/$gigId/applications'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -108,9 +158,14 @@ export interface FileRouteTypes {
     | '/login'
     | '/onboarding'
     | '/register'
+    | '/agreements/$agreementId'
     | '/gigs/$gigId'
+    | '/gigs/new'
     | '/settings/profile'
     | '/gigs'
+    | '/my-gigs'
+    | '/gigs/$gigId/edit'
+    | '/my-gigs/$gigId/applications'
   id:
     | '__root__'
     | '/'
@@ -118,9 +173,14 @@ export interface FileRouteTypes {
     | '/login'
     | '/onboarding'
     | '/register'
+    | '/agreements/$agreementId'
     | '/gigs/$gigId'
+    | '/gigs/new'
     | '/settings/profile'
     | '/gigs/'
+    | '/my-gigs/'
+    | '/gigs/$gigId_/edit'
+    | '/my-gigs/$gigId/applications'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -129,9 +189,14 @@ export interface RootRouteChildren {
   LoginRoute: typeof LoginRoute
   OnboardingRoute: typeof OnboardingRoute
   RegisterRoute: typeof RegisterRoute
+  AgreementsAgreementIdRoute: typeof AgreementsAgreementIdRoute
   GigsGigIdRoute: typeof GigsGigIdRoute
+  GigsNewRoute: typeof GigsNewRoute
   SettingsProfileRoute: typeof SettingsProfileRoute
   GigsIndexRoute: typeof GigsIndexRoute
+  MyGigsIndexRoute: typeof MyGigsIndexRoute
+  GigsGigIdEditRoute: typeof GigsGigIdEditRoute
+  MyGigsGigIdApplicationsRoute: typeof MyGigsGigIdApplicationsRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -171,6 +236,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof RegisterRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/agreements/$agreementId': {
+      id: '/agreements/$agreementId'
+      path: '/agreements/$agreementId'
+      fullPath: '/agreements/$agreementId'
+      preLoaderRoute: typeof AgreementsAgreementIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/gigs/': {
       id: '/gigs/'
       path: '/gigs'
@@ -185,11 +257,39 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof GigsGigIdRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/gigs/new': {
+      id: '/gigs/new'
+      path: '/gigs/new'
+      fullPath: '/gigs/new'
+      preLoaderRoute: typeof GigsNewRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/my-gigs/': {
+      id: '/my-gigs/'
+      path: '/my-gigs'
+      fullPath: '/my-gigs/'
+      preLoaderRoute: typeof MyGigsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/settings/profile': {
       id: '/settings/profile'
       path: '/settings/profile'
       fullPath: '/settings/profile'
       preLoaderRoute: typeof SettingsProfileRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/gigs/$gigId_/edit': {
+      id: '/gigs/$gigId_/edit'
+      path: '/gigs/$gigId/edit'
+      fullPath: '/gigs/$gigId/edit'
+      preLoaderRoute: typeof GigsGigIdEditRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/my-gigs/$gigId/applications': {
+      id: '/my-gigs/$gigId/applications'
+      path: '/my-gigs/$gigId/applications'
+      fullPath: '/my-gigs/$gigId/applications'
+      preLoaderRoute: typeof MyGigsGigIdApplicationsRouteImport
       parentRoute: typeof rootRouteImport
     }
   }
@@ -201,9 +301,14 @@ const rootRouteChildren: RootRouteChildren = {
   LoginRoute: LoginRoute,
   OnboardingRoute: OnboardingRoute,
   RegisterRoute: RegisterRoute,
+  AgreementsAgreementIdRoute: AgreementsAgreementIdRoute,
   GigsGigIdRoute: GigsGigIdRoute,
+  GigsNewRoute: GigsNewRoute,
   SettingsProfileRoute: SettingsProfileRoute,
   GigsIndexRoute: GigsIndexRoute,
+  MyGigsIndexRoute: MyGigsIndexRoute,
+  GigsGigIdEditRoute: GigsGigIdEditRoute,
+  MyGigsGigIdApplicationsRoute: MyGigsGigIdApplicationsRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
