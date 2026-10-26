@@ -41,7 +41,7 @@ export const agreementsApi = {
   start: (id: string) => request<Agreement>("POST", `/agreements/${id}/start`),
   confirm: (id: string) => request<Agreement>("POST", `/agreements/${id}/confirm-completion`),
   reviews: (id: string) => request<Review[]>("GET", `/agreements/${id}/reviews`),
-  review: (id: string, b: { rating: number; comment?: string }) => request<{ ok: true }>("POST", `/agreements/${id}/reviews`, { body: b }),
+  review: (id: string, b: { rating: number; comment?: string | undefined }) => request<{ ok: true }>("POST", `/agreements/${id}/reviews`, { body: b }),
 };
 
 export const messagesApi = {
@@ -57,7 +57,7 @@ export const notificationsApi = {
 };
 
 export const reportsApi = {
-  create: (b: { targetType: ReportTarget; targetId: string; reason: string; details?: string }) => request<{ ok: true }>("POST", "/reports", { body: b }),
+  create: (b: { targetType: ReportTarget; targetId: string; reason: string; details?: string | undefined }) => request<{ ok: true }>("POST", "/reports", { body: b }),
   adminList: () => request<Report[]>("GET", "/admin/reports"),
   resolve: (id: string, action: "dismiss" | "hide_gig" | "suspend_user") => request<{ ok: true }>("POST", `/admin/reports/${id}/resolve`, { body: { action } }),
 };

@@ -6,8 +6,8 @@ import { ApiError } from "./errors";
  * real Express backend. Auth relies on the backend's HttpOnly session cookie
  * (credentials: "include"); no tokens are stored client-side.
  */
-export const API_MODE: "mock" | "real" = import.meta.env.VITE_API_MODE === "real" ? "real" : "mock";
-const BASE = `${(import.meta.env.VITE_API_BASE_URL ?? "").replace(/\/$/, "")}/api/v1`;
+export const API_MODE: "mock" | "real" = import.meta.env["VITE_API_MODE"] === "real" ? "real" : "mock";
+const BASE = `${(import.meta.env["VITE_API_BASE_URL"] ?? "").replace(/\/$/, "")}/api/v1`;
 
 type Query = Record<string, string | number | undefined | null>;
 
@@ -30,8 +30,8 @@ export async function request<T>(method: string, path: string, opts: { body?: un
     res = await fetch(BASE + full, {
       method,
       credentials: "include",
-      headers: opts.body ? { "Content-Type": "application/json" } : undefined,
-      body: opts.body ? JSON.stringify(opts.body) : undefined,
+      headers: opts.body ? { "Content-Type": "application/json" } : {},
+      body: opts.body ? JSON.stringify(opts.body) : null,
     });
   } catch {
     throw new ApiError(0, "NETWORK", "Can't reach the server. Check your connection.");

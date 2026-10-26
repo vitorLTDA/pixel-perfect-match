@@ -155,8 +155,10 @@ function num(v: unknown, field: string, min: number, max: number): number {
 }
 
 // ---------- routes ----------
-type Body = Record<string, unknown>;
-type Handler = (p: Record<string, string>, q: URLSearchParams, b: Body) => unknown;
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+type Body = any;
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+type Handler = (p: any, q: URLSearchParams, b: Body) => unknown;
 const routes: Array<[string, RegExp, Handler]> = [];
 const on = (method: string, path: string, h: Handler) => {
   const re = new RegExp("^" + path.replace(/:(\w+)/g, "(?<$1>[^/]+)") + "$");

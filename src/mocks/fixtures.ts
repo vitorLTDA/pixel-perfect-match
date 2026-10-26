@@ -10,7 +10,7 @@ export interface DbUser {
   city: string;
   area: string;
   skills: string[];
-  phone?: string;
+  phone?: string | undefined;
   isAdmin: boolean;
   suspended: boolean;
   createdAt: string;
@@ -28,7 +28,7 @@ export interface DbGig {
   city: string;
   area: string;
   street: string;
-  complement?: string;
+  complement?: string | undefined;
   status: GigStatus;
   hidden: boolean;
   createdAt: string;
@@ -37,7 +37,7 @@ export interface DbApplication {
   id: string;
   gigId: string;
   workerId: string;
-  message?: string;
+  message?: string | undefined;
   status: ApplicationStatus;
   createdAt: string;
 }
@@ -61,7 +61,7 @@ export interface DbReview {
   reviewerId: string;
   revieweeId: string;
   rating: number;
-  comment?: string;
+  comment?: string | undefined;
   createdAt: string;
 }
 export interface DbConversation {
@@ -84,7 +84,7 @@ export interface DbNotification {
   type: string;
   title: string;
   body: string;
-  link?: string;
+  link?: string | undefined;
   read: boolean;
   createdAt: string;
 }
@@ -94,11 +94,11 @@ export interface DbReport {
   targetType: ReportTarget;
   targetId: string;
   reason: string;
-  details?: string;
+  details?: string | undefined;
   status: "open" | "dismissed" | "actioned";
-  resolution?: string;
+  resolution?: string | undefined;
   createdAt: string;
-  resolvedAt?: string;
+  resolvedAt?: string | undefined;
 }
 export interface Db {
   users: DbUser[];

@@ -15,7 +15,7 @@ export function AuthCard({ title, sub, children, footer }: { title: string; sub?
   );
 }
 
-export function FieldError({ id, msg }: { id: string; msg?: string }) {
+export function FieldError({ id, msg }: { id: string; msg?: string | undefined }) {
   if (!msg) return null;
   return <p id={id} role="alert" className="text-xs font-medium text-destructive">{msg}</p>;
 }
