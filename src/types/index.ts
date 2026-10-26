@@ -182,6 +182,6 @@ export interface GigFilters {
   city?: string | undefined;
   minPrice?: number | undefined;
   maxPrice?: number | undefined;
-  posted?: "24h" | "7d" | "30d";
+  posted?: "24h" | "7d" | "30d" | undefined;
   page?: number | undefined;
 }
