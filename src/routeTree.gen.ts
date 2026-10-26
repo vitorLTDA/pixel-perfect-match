@@ -10,22 +10,39 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AdminRouteImport } from './routes/admin'
+import { Route as DashboardRouteImport } from './routes/dashboard'
 import { Route as ForgotPasswordRouteImport } from './routes/forgot-password'
 import { Route as LoginRouteImport } from './routes/login'
+import { Route as MyApplicationsRouteImport } from './routes/my-applications'
+import { Route as NotificationsRouteImport } from './routes/notifications'
 import { Route as OnboardingRouteImport } from './routes/onboarding'
 import { Route as RegisterRouteImport } from './routes/register'
 import { Route as AgreementsAgreementIdRouteImport } from './routes/agreements.$agreementId'
 import { Route as GigsIndexRouteImport } from './routes/gigs.index'
 import { Route as GigsGigIdRouteImport } from './routes/gigs.$gigId'
 import { Route as GigsNewRouteImport } from './routes/gigs.new'
+import { Route as MessagesIndexRouteImport } from './routes/messages.index'
+import { Route as MessagesConversationIdRouteImport } from './routes/messages.$conversationId'
 import { Route as MyGigsIndexRouteImport } from './routes/my-gigs.index'
 import { Route as SettingsProfileRouteImport } from './routes/settings.profile'
+import { Route as UsersUserIdRouteImport } from './routes/users.$userId'
 import { Route as GigsGigIdEditRouteImport } from './routes/gigs.$gigId_.edit'
 import { Route as MyGigsGigIdApplicationsRouteImport } from './routes/my-gigs.$gigId.applications'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminRoute = AdminRouteImport.update({
+  id: '/admin',
+  path: '/admin',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DashboardRoute = DashboardRouteImport.update({
+  id: '/dashboard',
+  path: '/dashboard',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ForgotPasswordRoute = ForgotPasswordRouteImport.update({
@@ -36,6 +53,16 @@ const ForgotPasswordRoute = ForgotPasswordRouteImport.update({
 const LoginRoute = LoginRouteImport.update({
   id: '/login',
   path: '/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MyApplicationsRoute = MyApplicationsRouteImport.update({
+  id: '/my-applications',
+  path: '/my-applications',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NotificationsRoute = NotificationsRouteImport.update({
+  id: '/notifications',
+  path: '/notifications',
   getParentRoute: () => rootRouteImport,
 } as any)
 const OnboardingRoute = OnboardingRouteImport.update({
@@ -68,6 +95,16 @@ const GigsNewRoute = GigsNewRouteImport.update({
   path: '/gigs/new',
   getParentRoute: () => rootRouteImport,
 } as any)
+const MessagesIndexRoute = MessagesIndexRouteImport.update({
+  id: '/messages/',
+  path: '/messages/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MessagesConversationIdRoute = MessagesConversationIdRouteImport.update({
+  id: '/messages/$conversationId',
+  path: '/messages/$conversationId',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const MyGigsIndexRoute = MyGigsIndexRouteImport.update({
   id: '/my-gigs/',
   path: '/my-gigs/',
@@ -76,6 +113,11 @@ const MyGigsIndexRoute = MyGigsIndexRouteImport.update({
 const SettingsProfileRoute = SettingsProfileRouteImport.update({
   id: '/settings/profile',
   path: '/settings/profile',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const UsersUserIdRoute = UsersUserIdRouteImport.update({
+  id: '/users/$userId',
+  path: '/users/$userId',
   getParentRoute: () => rootRouteImport,
 } as any)
 const GigsGigIdEditRoute = GigsGigIdEditRouteImport.update({
@@ -91,30 +133,44 @@ const MyGigsGigIdApplicationsRoute = MyGigsGigIdApplicationsRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/admin': typeof AdminRoute
+  '/dashboard': typeof DashboardRoute
   '/forgot-password': typeof ForgotPasswordRoute
   '/login': typeof LoginRoute
+  '/my-applications': typeof MyApplicationsRoute
+  '/notifications': typeof NotificationsRoute
   '/onboarding': typeof OnboardingRoute
   '/register': typeof RegisterRoute
   '/agreements/$agreementId': typeof AgreementsAgreementIdRoute
   '/gigs/$gigId': typeof GigsGigIdRoute
   '/gigs/new': typeof GigsNewRoute
+  '/messages/$conversationId': typeof MessagesConversationIdRoute
   '/settings/profile': typeof SettingsProfileRoute
+  '/users/$userId': typeof UsersUserIdRoute
   '/gigs/': typeof GigsIndexRoute
+  '/messages/': typeof MessagesIndexRoute
   '/my-gigs/': typeof MyGigsIndexRoute
   '/gigs/$gigId/edit': typeof GigsGigIdEditRoute
   '/my-gigs/$gigId/applications': typeof MyGigsGigIdApplicationsRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/admin': typeof AdminRoute
+  '/dashboard': typeof DashboardRoute
   '/forgot-password': typeof ForgotPasswordRoute
   '/login': typeof LoginRoute
+  '/my-applications': typeof MyApplicationsRoute
+  '/notifications': typeof NotificationsRoute
   '/onboarding': typeof OnboardingRoute
   '/register': typeof RegisterRoute
   '/agreements/$agreementId': typeof AgreementsAgreementIdRoute
   '/gigs/$gigId': typeof GigsGigIdRoute
   '/gigs/new': typeof GigsNewRoute
+  '/messages/$conversationId': typeof MessagesConversationIdRoute
   '/settings/profile': typeof SettingsProfileRoute
+  '/users/$userId': typeof UsersUserIdRoute
   '/gigs': typeof GigsIndexRoute
+  '/messages': typeof MessagesIndexRoute
   '/my-gigs': typeof MyGigsIndexRoute
   '/gigs/$gigId/edit': typeof GigsGigIdEditRoute
   '/my-gigs/$gigId/applications': typeof MyGigsGigIdApplicationsRoute
@@ -122,15 +178,22 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/admin': typeof AdminRoute
+  '/dashboard': typeof DashboardRoute
   '/forgot-password': typeof ForgotPasswordRoute
   '/login': typeof LoginRoute
+  '/my-applications': typeof MyApplicationsRoute
+  '/notifications': typeof NotificationsRoute
   '/onboarding': typeof OnboardingRoute
   '/register': typeof RegisterRoute
   '/agreements/$agreementId': typeof AgreementsAgreementIdRoute
   '/gigs/$gigId': typeof GigsGigIdRoute
   '/gigs/new': typeof GigsNewRoute
+  '/messages/$conversationId': typeof MessagesConversationIdRoute
   '/settings/profile': typeof SettingsProfileRoute
+  '/users/$userId': typeof UsersUserIdRoute
   '/gigs/': typeof GigsIndexRoute
+  '/messages/': typeof MessagesIndexRoute
   '/my-gigs/': typeof MyGigsIndexRoute
   '/gigs/$gigId_/edit': typeof GigsGigIdEditRoute
   '/my-gigs/$gigId/applications': typeof MyGigsGigIdApplicationsRoute
@@ -139,45 +202,66 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/admin'
+    | '/dashboard'
     | '/forgot-password'
     | '/login'
+    | '/my-applications'
+    | '/notifications'
     | '/onboarding'
     | '/register'
     | '/agreements/$agreementId'
     | '/gigs/$gigId'
     | '/gigs/new'
+    | '/messages/$conversationId'
     | '/settings/profile'
+    | '/users/$userId'
     | '/gigs/'
+    | '/messages/'
     | '/my-gigs/'
     | '/gigs/$gigId/edit'
     | '/my-gigs/$gigId/applications'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/admin'
+    | '/dashboard'
     | '/forgot-password'
     | '/login'
+    | '/my-applications'
+    | '/notifications'
     | '/onboarding'
     | '/register'
     | '/agreements/$agreementId'
     | '/gigs/$gigId'
     | '/gigs/new'
+    | '/messages/$conversationId'
     | '/settings/profile'
+    | '/users/$userId'
     | '/gigs'
+    | '/messages'
     | '/my-gigs'
     | '/gigs/$gigId/edit'
     | '/my-gigs/$gigId/applications'
   id:
     | '__root__'
     | '/'
+    | '/admin'
+    | '/dashboard'
     | '/forgot-password'
     | '/login'
+    | '/my-applications'
+    | '/notifications'
     | '/onboarding'
     | '/register'
     | '/agreements/$agreementId'
     | '/gigs/$gigId'
     | '/gigs/new'
+    | '/messages/$conversationId'
     | '/settings/profile'
+    | '/users/$userId'
     | '/gigs/'
+    | '/messages/'
     | '/my-gigs/'
     | '/gigs/$gigId_/edit'
     | '/my-gigs/$gigId/applications'
@@ -185,15 +269,22 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AdminRoute: typeof AdminRoute
+  DashboardRoute: typeof DashboardRoute
   ForgotPasswordRoute: typeof ForgotPasswordRoute
   LoginRoute: typeof LoginRoute
+  MyApplicationsRoute: typeof MyApplicationsRoute
+  NotificationsRoute: typeof NotificationsRoute
   OnboardingRoute: typeof OnboardingRoute
   RegisterRoute: typeof RegisterRoute
   AgreementsAgreementIdRoute: typeof AgreementsAgreementIdRoute
   GigsGigIdRoute: typeof GigsGigIdRoute
   GigsNewRoute: typeof GigsNewRoute
+  MessagesConversationIdRoute: typeof MessagesConversationIdRoute
   SettingsProfileRoute: typeof SettingsProfileRoute
+  UsersUserIdRoute: typeof UsersUserIdRoute
   GigsIndexRoute: typeof GigsIndexRoute
+  MessagesIndexRoute: typeof MessagesIndexRoute
   MyGigsIndexRoute: typeof MyGigsIndexRoute
   GigsGigIdEditRoute: typeof GigsGigIdEditRoute
   MyGigsGigIdApplicationsRoute: typeof MyGigsGigIdApplicationsRoute
@@ -208,6 +299,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/admin': {
+      id: '/admin'
+      path: '/admin'
+      fullPath: '/admin'
+      preLoaderRoute: typeof AdminRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/dashboard': {
+      id: '/dashboard'
+      path: '/dashboard'
+      fullPath: '/dashboard'
+      preLoaderRoute: typeof DashboardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/forgot-password': {
       id: '/forgot-password'
       path: '/forgot-password'
@@ -220,6 +325,20 @@ declare module '@tanstack/react-router' {
       path: '/login'
       fullPath: '/login'
       preLoaderRoute: typeof LoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/my-applications': {
+      id: '/my-applications'
+      path: '/my-applications'
+      fullPath: '/my-applications'
+      preLoaderRoute: typeof MyApplicationsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/notifications': {
+      id: '/notifications'
+      path: '/notifications'
+      fullPath: '/notifications'
+      preLoaderRoute: typeof NotificationsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/onboarding': {
@@ -264,6 +383,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof GigsNewRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/messages/': {
+      id: '/messages/'
+      path: '/messages'
+      fullPath: '/messages/'
+      preLoaderRoute: typeof MessagesIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/messages/$conversationId': {
+      id: '/messages/$conversationId'
+      path: '/messages/$conversationId'
+      fullPath: '/messages/$conversationId'
+      preLoaderRoute: typeof MessagesConversationIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/my-gigs/': {
       id: '/my-gigs/'
       path: '/my-gigs'
@@ -276,6 +409,13 @@ declare module '@tanstack/react-router' {
       path: '/settings/profile'
       fullPath: '/settings/profile'
       preLoaderRoute: typeof SettingsProfileRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/users/$userId': {
+      id: '/users/$userId'
+      path: '/users/$userId'
+      fullPath: '/users/$userId'
+      preLoaderRoute: typeof UsersUserIdRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/gigs/$gigId_/edit': {
@@ -297,15 +437,22 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AdminRoute: AdminRoute,
+  DashboardRoute: DashboardRoute,
   ForgotPasswordRoute: ForgotPasswordRoute,
   LoginRoute: LoginRoute,
+  MyApplicationsRoute: MyApplicationsRoute,
+  NotificationsRoute: NotificationsRoute,
   OnboardingRoute: OnboardingRoute,
   RegisterRoute: RegisterRoute,
   AgreementsAgreementIdRoute: AgreementsAgreementIdRoute,
   GigsGigIdRoute: GigsGigIdRoute,
   GigsNewRoute: GigsNewRoute,
+  MessagesConversationIdRoute: MessagesConversationIdRoute,
   SettingsProfileRoute: SettingsProfileRoute,
+  UsersUserIdRoute: UsersUserIdRoute,
   GigsIndexRoute: GigsIndexRoute,
+  MessagesIndexRoute: MessagesIndexRoute,
   MyGigsIndexRoute: MyGigsIndexRoute,
   GigsGigIdEditRoute: GigsGigIdEditRoute,
   MyGigsGigIdApplicationsRoute: MyGigsGigIdApplicationsRoute,
